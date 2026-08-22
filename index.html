@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFFDED">
+<meta name="description" content="Athena & Uday are getting married — Udaipur, 14–15 January 2027. The schedule, dress codes, travel and FAQ.">
+<title>Athena &amp; Uday · Udaipur</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪔</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Mulish:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFDED; --ink:#001D3D; --soft:#5C6B78; --hair:#E3DDC2; --hair-soft:#EFEACF;
+    --paper:#FFFDED;
+    --nav-h:58px;
+  }
+  /* alternating section palette — cream and navy only */
+  #schedule,#travel{--bg:#001D3D; --ink:#FFFDED; --soft:rgba(255,253,237,.68);
+    --hair:rgba(255,253,237,.28); --hair-soft:rgba(255,253,237,.16);
+    background:var(--bg); color:var(--ink)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+  body{background:var(--bg); color:var(--ink); font-family:'Mulish',sans-serif; font-weight:400;
+    line-height:1.75; font-size:15.5px; padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom))}
+  h1,h2,h3,.serif{font-family:'Bodoni Moda',serif; font-weight:400}
+  a{color:var(--ink); text-underline-offset:3px}
+  strong,b{font-weight:600}
+  section{scroll-margin-top:8px}
+  ::selection{background:#EDE6BE}
+
+  .wrap{max-width:660px; margin:0 auto; padding:0 24px}
+
+  /* small-caps label */
+  .lab{font-size:10.5px; letter-spacing:.28em; text-transform:uppercase; font-weight:600; color:var(--ink)}
+  .lab.soft{color:var(--soft)}
+
+  /* ═══ mobile bottom tab bar ═══ */
+  .tabbar{position:fixed; left:0; right:0; bottom:0; z-index:90; display:flex;
+    background:rgba(255,253,237,.92); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+    border-top:1px solid var(--hair); padding-bottom:env(safe-area-inset-bottom)}
+  .tabbar a{position:relative; flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;
+    padding:10px 2px 8px; text-decoration:none; color:rgba(0,29,61,.4); font-size:8.5px;
+    font-weight:600; letter-spacing:.18em; text-transform:uppercase; transition:color .2s}
+  .tabbar a svg{width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.3;
+    stroke-linecap:round; stroke-linejoin:round}
+  .tabbar a.active{color:var(--ink); background:rgba(0,29,61,.1)}
+  .tabbar a.active svg{stroke-width:1.9}
+  .tabbar a.active::before{content:""; position:absolute; top:-1px; left:0; right:0; height:2px;
+    background:var(--ink)}
+
+  /* ═══ desktop top nav ═══ */
+  .topnav{display:none}
+  @media(min-width:820px){
+    body{padding-bottom:0}
+    .tabbar{display:none}
+    .topnav{display:flex; position:sticky; top:0; z-index:90; align-items:center; justify-content:space-between;
+      background:rgba(255,253,237,.9); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--hair); padding:18px 40px}
+    .topnav .brand{font-family:'Bodoni Moda',serif; font-size:17px; letter-spacing:.14em;
+      text-transform:uppercase; color:var(--ink); text-decoration:none}
+    .topnav .brand em{font-style:italic; text-transform:lowercase; letter-spacing:0; padding:0 2px}
+    .topnav .links{display:flex; gap:34px}
+    .topnav .links a{font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; font-weight:600;
+      color:var(--soft); text-decoration:none; padding:4px 0; border-bottom:1px solid transparent; transition:.2s}
+    .topnav .links a:hover{color:var(--ink)}
+    .topnav .links a.active{color:var(--ink); border-bottom-color:var(--ink)}
+    section{scroll-margin-top:72px}
+  }
+
+  /* ═══ hero ═══ */
+  .hero{position:relative; min-height:100svh; display:flex; align-items:center; justify-content:center;
+    text-align:center; color:var(--paper); background:#001D3D; overflow:hidden}
+  .hero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center}
+  .hero-veil{position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(12,10,7,.42) 0%, rgba(12,10,7,.24) 34%, rgba(12,10,7,.26) 58%, rgba(12,10,7,.66) 100%)}
+  .hero.noimg .hero-veil{background:none}
+  .hero-inner{position:relative; z-index:2; padding:90px 20px 120px; width:100%;
+    text-shadow:0 1px 26px rgba(12,10,7,.45), 0 1px 3px rgba(12,10,7,.25)}
+  .hero-logo{position:absolute; top:calc(22px + env(safe-area-inset-top)); left:50%;
+    transform:translateX(-50%); width:clamp(88px,22vw,132px); z-index:3;
+    filter:drop-shadow(0 1px 12px rgba(12,10,7,.35))}
+  .hero-kicker{font-size:10.5px; letter-spacing:.4em; text-transform:uppercase; font-weight:600;
+    margin-bottom:30px; padding-left:.4em; opacity:.92}
+  .hero h1{line-height:.98; letter-spacing:.05em}
+  .hero h1 span{display:block; font-size:clamp(58px,18vw,150px); text-transform:uppercase; font-weight:400}
+  .hero h1 em{display:block; font-style:italic; font-weight:400; text-transform:lowercase;
+    font-size:clamp(22px,6vw,46px); letter-spacing:.02em; margin:10px 0 6px}
+  .hero-sub{margin-top:34px; font-size:10.5px; letter-spacing:.4em; text-transform:uppercase;
+    font-weight:600; padding-left:.4em; opacity:.92}
+  .hero-count{display:inline-flex; align-items:center; gap:16px; margin-top:16px;
+    font-size:10px; letter-spacing:.3em; text-transform:uppercase; font-weight:400; opacity:.85; padding-left:.3em}
+  .hero-count::before,.hero-count::after{content:""; width:34px; height:1px; background:currentColor; opacity:.5}
+  .scroll-cue{position:absolute; left:50%; transform:translateX(-50%); bottom:calc(var(--nav-h) + 26px);
+    z-index:2; display:flex; flex-direction:column; align-items:center; gap:10px;
+    font-size:9px; letter-spacing:.34em; text-transform:uppercase; font-weight:600; opacity:.8; padding-left:.34em}
+  .scroll-cue::before{content:""; width:1px; height:44px; background:currentColor; opacity:.6}
+  @media(min-width:820px){
+    .hero{min-height:calc(100svh - 62px)}
+    .scroll-cue{bottom:34px}
+  }
+
+  /* ═══ section furniture ═══ */
+  section{padding:78px 0 10px}
+  .sec-head{border-top:1px solid var(--ink); padding-top:18px; margin-bottom:34px;
+    display:flex; align-items:baseline; justify-content:space-between; gap:18px}
+  .sec-kicker{display:block; margin-bottom:10px}
+  .sec-title{font-size:clamp(34px,8.5vw,52px); line-height:1.05; letter-spacing:.01em}
+  .sec-title em{font-style:italic}
+  .sec-intro{color:var(--soft); margin:16px 0 0; max-width:520px}
+
+  /* ═══ our story ═══ */
+  .story p{margin-bottom:16px; max-width:560px}
+  .story .pull{font-family:'Bodoni Moda',serif; font-style:italic; font-size:clamp(21px,5.4vw,27px);
+    line-height:1.35; color:var(--ink); margin:26px 0; padding-left:22px; border-left:1px solid var(--ink); max-width:520px}
+  .story .sign{margin-top:26px; font-family:'Bodoni Moda',serif; font-style:italic; font-size:19px}
+
+  /* ═══ facts ═══ */
+  .facts{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--hair);
+    border:1px solid var(--hair); margin-top:52px}
+  .facts .fact:last-child{grid-column:1/-1}
+  @media(min-width:640px){.facts{grid-template-columns:repeat(3,1fr)} .facts .fact:last-child{grid-column:auto}}
+  .fact{background:var(--bg); padding:22px 18px}
+  .fact .n{font-size:11.5px; color:var(--soft); margin-top:6px; line-height:1.55}
+  .fact .k{font-size:9.5px; letter-spacing:.24em; text-transform:uppercase; font-weight:600;
+    color:var(--soft); margin-bottom:8px}
+  .fact .v{font-family:'Bodoni Moda',serif; font-size:18px; line-height:1.3}
+  .fact a{color:var(--ink)}
+
+  /* ═══ schedule ═══ */
+  .day{margin-top:52px}
+  .day:first-of-type{margin-top:8px}
+  .day-head{display:flex; align-items:baseline; gap:16px; padding-bottom:12px; border-bottom:1px solid var(--ink)}
+  .day-head .n{font-family:'Bodoni Moda',serif; font-style:italic; font-size:15px; color:var(--soft); white-space:nowrap}
+  .day-head .d{font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; font-weight:600}
+  .day-head .opt{margin-left:auto; font-family:'Bodoni Moda',serif; font-style:italic; font-size:14px; color:var(--soft)}
+
+  .event{padding:30px 0; border-bottom:1px solid var(--hair)}
+  .event:last-child{border-bottom:0}
+  .event .time{font-size:9.5px; letter-spacing:.26em; text-transform:uppercase; font-weight:600;
+    color:var(--soft); margin-bottom:8px}
+  .event h3{font-size:clamp(27px,7vw,34px); line-height:1.1}
+  .event .desc{margin-top:12px; max-width:540px}
+  .subs{margin-top:16px; max-width:540px}
+  .sub{display:flex; gap:18px; padding:11px 0; border-top:1px solid var(--hair-soft); font-size:14.5px}
+  .sub .st{flex:0 0 72px; font-size:9.5px; letter-spacing:.18em; text-transform:uppercase;
+    font-weight:600; color:var(--soft); padding-top:3px}
+  .sub b{font-weight:600}
+  .sub .sd{color:var(--soft); font-size:13.5px; margin-top:2px}
+
+  .event .dress{margin-top:12px; font-family:'Bodoni Moda',serif; font-style:italic; font-size:16.5px}
+  .event .dress .dc{font-family:'Mulish',sans-serif; font-style:normal; font-size:9.5px; letter-spacing:.26em;
+    text-transform:uppercase; font-weight:600; color:var(--soft); margin-right:10px}
+
+  /* ═══ wardrobe ═══ */
+  .wcode{padding:32px 0; border-bottom:1px solid var(--hair)}
+  .wcode:last-of-type{border-bottom:0}
+  .wcode .when{font-size:9.5px; letter-spacing:.26em; text-transform:uppercase; font-weight:600;
+    color:var(--soft); margin-bottom:8px}
+  .wcode h3{font-size:clamp(23px,6vw,28px); line-height:1.15}
+  .wcode .line{font-family:'Bodoni Moda',serif; font-style:italic; font-size:clamp(19px,5vw,24px);
+    line-height:1.4; margin-top:10px; max-width:540px}
+  .btn{display:flex; width:100%; justify-content:center; align-items:center; gap:14px;
+    margin:2px 0 34px; padding:19px 24px; background:var(--ink); border:1px solid var(--ink);
+    font-size:11px; letter-spacing:.3em; text-transform:uppercase; font-weight:600;
+    color:var(--bg); text-decoration:none; transition:background .2s, color .2s}
+  .btn:hover{background:transparent; color:var(--ink)}
+  .btn svg{width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.6;
+    stroke-linecap:round; stroke-linejoin:round}
+
+  .wguide{margin-top:14px}
+  .wguide img{display:block; width:100%; height:auto}
+  .wguide .ph-fallback{display:none}
+  .wguide.noimg{position:relative; aspect-ratio:3/2; background:#001D3D}
+  .wguide.noimg .ph-fallback{display:flex; position:absolute; inset:0; align-items:center; justify-content:center;
+    text-align:center; padding:12px; color:var(--paper); font-size:8.5px; letter-spacing:.3em;
+    text-transform:uppercase; font-weight:600; line-height:2; opacity:.85}
+
+  /* ═══ section hero headers ═══ */
+  .shero{position:relative; height:clamp(300px,44svh,480px); display:flex; align-items:flex-end;
+    overflow:hidden; background:#001D3D; color:#FFFDED}
+  .shero img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+  .shero-veil{position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(12,10,7,.18) 0%, rgba(12,10,7,.08) 45%, rgba(12,10,7,.62) 100%)}
+  .shero.noimg .shero-veil{display:none}
+  .shero-txt{position:relative; z-index:2; width:100%; max-width:660px; margin:0 auto;
+    padding:0 24px 32px; text-shadow:0 1px 22px rgba(12,10,7,.45)}
+  .shero-txt .lab{color:#FFFDED; opacity:.9; display:block; margin-bottom:8px}
+  .shero-txt h2{font-size:clamp(32px,8vw,46px); line-height:1.05}
+  .shero-txt h2 em{font-style:italic}
+  #schedule,#wardrobe,#travel,#faq{padding-top:0}
+  .shero + .wrap{padding-top:48px}
+  .shero img.pos-story{object-position:center 80%}
+  .shero img.pos-travel{object-position:center 70%}
+  @media(min-width:820px){
+    .shero img.pos-story{object-position:center 45%}
+    .shero img.pos-travel{object-position:center 50%}
+  }
+  .wfoot{margin-top:30px; font-family:'Bodoni Moda',serif; font-style:italic; font-size:16px;
+    color:var(--soft); max-width:540px}
+
+  /* ═══ travel ═══ */
+  .tcard{padding:34px 0 30px; border-bottom:1px solid var(--hair)}
+  .tcard:last-of-type{border-bottom:0}
+  .tcard .kick{font-size:9.5px; letter-spacing:.3em; text-transform:uppercase; font-weight:600;
+    color:var(--soft); margin-bottom:10px}
+  .tcard h3{font-size:clamp(25px,6.5vw,30px); margin-bottom:14px}
+  .tcard p{margin-bottom:12px; max-width:560px}
+  .tcard p:last-child{margin-bottom:0}
+  .tcard ol{margin:18px 0 6px; list-style:none; counter-reset:st}
+  .tcard ol li{counter-increment:st; position:relative; padding:13px 0 13px 44px; font-size:14.5px;
+    border-bottom:1px solid var(--hair-soft)}
+  .tcard ol li:last-child{border-bottom:0}
+  .tcard ol li::before{content:counter(st, decimal-leading-zero); position:absolute; left:0; top:13px;
+    font-family:'Bodoni Moda',serif; font-style:italic; font-size:15px; color:var(--soft)}
+  .weather-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--hair);
+    border:1px solid var(--hair); margin:18px 0 16px; max-width:560px}
+  .wg{background:var(--bg); padding:18px 12px; text-align:center}
+  .wg .t{font-family:'Bodoni Moda',serif; font-size:21px}
+  .wg .l{font-size:9px; letter-spacing:.2em; text-transform:uppercase; font-weight:600; color:var(--soft); margin-top:6px}
+
+  /* ═══ FAQ ═══ */
+  details.faq{border-bottom:1px solid var(--hair)}
+  details.faq:first-of-type{border-top:1px solid var(--hair)}
+  details.faq summary{list-style:none; cursor:pointer; padding:20px 0; display:flex; gap:16px;
+    align-items:baseline; justify-content:space-between; font-family:'Bodoni Moda',serif; font-size:20px; line-height:1.35}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::after{content:"+"; font-size:20px; color:var(--soft); flex:0 0 auto; transition:transform .25s}
+  details.faq[open] summary::after{transform:rotate(45deg)}
+  details.faq .a{padding:0 0 22px; font-size:14.5px; max-width:560px}
+  details.faq .a p + p{margin-top:10px}
+
+  /* ═══ footer ═══ */
+  footer{text-align:center; padding:90px 24px 60px}
+  footer .rule{width:1px; height:52px; background:var(--ink); margin:0 auto 30px}
+  footer .names{font-family:'Bodoni Moda',serif; font-size:clamp(24px,6vw,32px); letter-spacing:.18em;
+    text-transform:uppercase}
+  footer .names em{font-style:italic; text-transform:lowercase; letter-spacing:0; padding:0 4px}
+  footer .meta{font-size:9.5px; letter-spacing:.34em; text-transform:uppercase; font-weight:600;
+    color:var(--soft); margin-top:14px; padding-left:.34em}
+</style>
+</head>
+<body>
+
+<!-- ═══ desktop nav ═══ -->
+<nav class="topnav" aria-label="Site">
+  <a class="brand" href="#home">Athena <em>and</em> Uday</a>
+  <div class="links">
+    <a href="#home" class="active">Home</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#wardrobe">Wardrobe</a>
+    <a href="#travel">Travel</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HOME ═══════════════════ -->
+<section id="home" style="padding-top:0">
+  <header class="hero">
+    <img class="hero-img" src="photos/engagement-hero.jpg" alt=""
+         onerror="this.closest('.hero').classList.add('noimg'); this.remove()">
+    <div class="hero-veil"></div>
+    <img class="hero-logo" src="photos/logo-cream.png" alt="Athena and Uday monogram"
+         onerror="this.remove()">
+    <div class="hero-inner">
+      <p class="hero-kicker">Udaipur · Rajasthan · India</p>
+      <h1><span>Athena</span><em>and</em><span>Uday</span></h1>
+      <p class="hero-sub">14 — 15 January 2027</p>
+      <br>
+      <span class="hero-count" id="countdown"></span>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+  </header>
+
+  <div class="shero">
+    <img src="photos/engagement-01.jpg" alt="" class="pos-story"
+         onerror="this.closest('.shero').classList.add('noimg'); this.remove()">
+    <div class="shero-veil"></div>
+    <div class="shero-txt">
+      <span class="lab">Our story</span>
+      <h2>Eight years <em>in the making</em></h2>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="story">
+      <p>Athena and Uday met the old-fashioned way — in the hallowed lecture halls of UCL, during
+      their Masters in Management, all the way back in 2018.</p>
+      <p>Uday was deep in his self-declared &ldquo;party year&rdquo;, having traded engineering for the
+      greener pastures of business. Athena was the quiet, scorn-faced student at the back of the
+      class, convinced she was far too cool to make friends at uni.</p>
+      <p>She made one anyway.</p>
+      <p>Eight years, countless trips, one global pandemic, and a proposal on a shaky boat in
+      Calcutta later — here we are, ready to celebrate the start of the rest of our lives with all
+      of you. We can&rsquo;t wait!</p>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><div class="k">When</div><div class="v">14–15 January 2027</div></div>
+      <div class="fact"><div class="k">Where</div><div class="v">Wyndham Garden, Udaipur</div></div>
+      <div class="fact"><div class="k">RSVP by</div><div class="v">30 September 2026</div>
+        <div class="n">A link will be sent to you in early September</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SCHEDULE ═══════════════════ -->
+<section id="schedule">
+  <div class="shero">
+    <img src="photos/engagement-04.jpg" alt="" style="object-position:center 56%"
+         onerror="this.closest('.shero').classList.add('noimg'); this.remove()">
+    <div class="shero-veil"></div>
+    <div class="shero-txt">
+      <span class="lab">14 — 15 January 2027</span>
+      <h2>The <em>celebrations</em></h2>
+    </div>
+  </div>
+  <div class="wrap">
+
+    <!-- DAY 0 -->
+    <div class="day">
+      <div class="day-head"><span class="n">Day Zero</span><span class="d">Wednesday 13 January</span><span class="opt">Optional</span></div>
+
+      <article class="event">
+        <p class="time">Evening</p>
+        <h3>Welcome Dinner</h3>
+        <p class="desc">For everyone arriving a day early — join us for a relaxed evening of dinner
+        and drinks before the celebrations begin.</p>
+        <p class="dress"><span class="dc">Dress code</span>Smart Casual</p>
+      </article>
+    </div>
+
+    <!-- DAY 1 -->
+    <div class="day">
+      <div class="day-head"><span class="n">Day One</span><span class="d">Thursday 14 January</span></div>
+
+      <article class="event">
+        <p class="time">12:00 pm</p>
+        <h3>Mehendi</h3>
+        <p class="desc">An afternoon of henna, games, market stalls, and lunch by the pool — the
+        start of the celebrations.</p>
+        <p class="dress"><span class="dc">Dress code</span>Citrus, light and breezy — when life gives you lemons, wear them!</p>
+      </article>
+
+      <article class="event">
+        <p class="time">7:00 pm</p>
+        <h3>Sangeet</h3>
+        <p class="desc">An evening of music and dancing, with performances from both families.</p>
+        <p class="dress"><span class="dc">Dress code</span>Bollywood glitz and glam</p>
+      </article>
+
+      <article class="event">
+        <p class="time">From 11:00 pm</p>
+        <h3>Afterparty</h3>
+        <p class="dress"><span class="dc">Dress code</span>Comfortable &amp; casual</p>
+      </article>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day">
+      <div class="day-head"><span class="n">Day Two</span><span class="d">Friday 15 January</span></div>
+
+      <article class="event">
+        <p class="time">12:00 pm</p>
+        <h3>Rajasthani Lunch</h3>
+        <p class="desc">A sit-down lunch celebrating the flavours of Rajasthan.</p>
+        <p class="dress"><span class="dc">Dress code</span>Light, colourful and comfortable.</p>
+      </article>
+
+      <article class="event">
+        <p class="time">From 3:00 pm</p>
+        <h3>The Ceremony</h3>
+        <div class="subs">
+          <div class="sub"><span class="st">3:00 pm</span><div><b>Safa Bandhi</b><div class="sd">The tying of the safas — the wedding turbans — for family and guests.</div></div></div>
+          <div class="sub"><span class="st">4:00 pm</span><div><b>Uday&rsquo;s Baraat</b><div class="sd">The groom&rsquo;s procession — a live band, dancing, and everyone joins.</div></div></div>
+          <div class="sub"><span class="st">5:30 pm</span><div><b>The Wedding Ceremony</b><div class="sd">Followed by dinner and celebrations.</div></div></div>
+        </div>
+        <p class="dress"><span class="dc">Dress code</span>Traditional or formal</p>
+      </article>
+
+      <article class="event">
+        <p class="time">From 11:00 pm</p>
+        <h3>Afterparty</h3>
+        <p class="dress"><span class="dc">Dress code</span>Comfortable &amp; casual</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ WARDROBE ═══════════════════ -->
+<section id="wardrobe">
+  <div class="shero">
+    <img src="photos/engagement-03.jpg" alt="" style="object-position:center 40%"
+         onerror="this.closest('.shero').classList.add('noimg'); this.remove()">
+    <div class="shero-veil"></div>
+    <div class="shero-txt">
+      <span class="lab">What to wear</span>
+      <h2>The <em>wardrobe planner</em></h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <a class="btn" href="wardrobe-planner.pdf" download>Download the wardrobe planner<svg viewBox="0 0 24 24"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M4.5 20h15"/></svg></a>
+
+    <div class="wcode">
+      <h3>Welcome Dinner</h3>
+      <p class="line">Smart casual</p>
+    </div>
+
+    <div class="wcode">
+      <h3>Mehendi</h3>
+      <p class="line">Citrus, light and breezy — when life gives you lemons, wear them!</p>
+      <div class="wguide"><img src="photos/outfit-02-a.webp" alt="Outfit guide" onerror="this.parentElement.classList.add('noimg'); this.remove()"><div class="ph-fallback">Outfit inspiration</div></div>
+    </div>
+
+    <div class="wcode">
+      <h3>Sangeet</h3>
+      <p class="line">Bollywood glitz and glam</p>
+      <div class="wguide"><img src="photos/outfit-03-a.webp" alt="Outfit guide" onerror="this.parentElement.classList.add('noimg'); this.remove()"><div class="ph-fallback">Outfit inspiration</div></div>
+    </div>
+
+    <div class="wcode">
+      <h3>Rajasthani Lunch</h3>
+      <p class="line">Light, colourful and comfortable.</p>
+      <div class="wguide"><img src="photos/outfit-04-a.webp" alt="Outfit guide" onerror="this.parentElement.classList.add('noimg'); this.remove()"><div class="ph-fallback">Outfit inspiration</div></div>
+    </div>
+
+    <div class="wcode">
+      <h3>The Ceremony</h3>
+      <p class="line">Traditional or formal</p>
+      <div class="wguide"><img src="photos/outfit-05-a.webp" alt="Outfit guide" onerror="this.parentElement.classList.add('noimg'); this.remove()"><div class="ph-fallback">Outfit inspiration</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ TRAVEL ═══════════════════ -->
+<section id="travel">
+  <div class="shero">
+    <img src="photos/engagement-05.jpg" alt="" class="pos-travel"
+         onerror="this.closest('.shero').classList.add('noimg'); this.remove()">
+    <div class="shero-veil"></div>
+    <div class="shero-txt">
+      <span class="lab">Getting to Udaipur</span>
+      <h2>Travel, visas &amp; <em>where you&rsquo;ll stay</em></h2>
+    </div>
+  </div>
+  <div class="wrap">
+
+    <div class="tcard">
+      <p class="kick">Flights</p>
+      <h3>Getting here</h3>
+      <p>Fly into <strong>Delhi (DEL)</strong> or <strong>Mumbai (BOM)</strong>, then take a short domestic
+      hop to <strong>Udaipur — Maharana Pratap Airport (UDR)</strong>. It&rsquo;s about an hour in the air
+      from either city, with flights several times a day.</p>
+      <p>Please leave yourself a <strong>generous connection window</strong> between your international
+      and domestic flights.</p>
+    </div>
+
+    <div class="tcard">
+      <p class="kick">Visas</p>
+      <h3>Read this first</h3>
+      <p>If you hold a <strong>UK or Malaysian passport</strong>, you&rsquo;ll need an <strong>e-Visa</strong> to enter India.</p>
+      <ol>
+        <li><strong>Use the real website:</strong> <a href="https://indianvisaonline.gov.in/" target="_blank" rel="noopener">indianvisaonline.gov.in</a> — there are dozens of lookalike sites that will charge you 5&times; the actual fee.</li>
+        <li><strong>Check your passport</strong> — You will need at least six months&rsquo; validity to travel.</li>
+        <li><strong>Don&rsquo;t leave it late</strong> — e-Visas usually come through in a few working days, but apply at least a month ahead, just in case :)</li>
+        <li><strong>Travelling on another passport?</strong> Check your own rules early — and let us know if we can help.</li>
+      </ol>
+    </div>
+
+    <div class="tcard">
+      <p class="kick">Accommodation</p>
+      <h3>Where you&rsquo;ll stay</h3>
+      <p>We&rsquo;ve block booked accommodation for the wedding. You will be contacted individually on
+      the details. There&rsquo;s nothing to do right now.</p>
+    </div>
+
+    <div class="tcard">
+      <p class="kick">Climate</p>
+      <h3>The weather</h3>
+      <p>Warm, sunny days with cold evenings. Pack a scarf or jacket and don&rsquo;t say we didn&rsquo;t warn you!</p>
+      <div class="weather-grid">
+        <div class="wg"><div class="t">22–26°C</div><div class="l">Daytime, sunny</div></div>
+        <div class="wg"><div class="t">5:50 pm</div><div class="l">Sunset</div></div>
+        <div class="wg"><div class="t">8–12°C</div><div class="l">After dark</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section id="faq">
+  <div class="shero">
+    <img src="photos/engagement-06.jpg" alt="" style="object-position:center 22%"
+         onerror="this.closest('.shero').classList.add('noimg'); this.remove()">
+    <div class="shero-veil"></div>
+    <div class="shero-txt">
+      <span class="lab">Questions</span>
+      <h2>Asked &amp; <em>answered</em></h2>
+    </div>
+  </div>
+  <div class="wrap">
+
+    <details class="faq">
+      <summary>When do I need to RSVP by?</summary>
+      <div class="a"><p><strong>Please RSVP by 30 September 2026.</strong></p>
+      <p>RSVP link will be sent to you via WhatsApp.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>What should I wear?</summary>
+      <div class="a"><p>Each event&rsquo;s dress code is in <a href="#wardrobe">the wardrobe planner</a>.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Can I bring a plus one?</summary>
+      <div class="a"><p>Unfortunately we&rsquo;ve had to keep the numbers tight, so we can only welcome the
+      names printed on your invitation.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>How do I get there, and where am I staying?</summary>
+      <div class="a"><p>Fly into Delhi or Mumbai, then a one-hour hop to Udaipur. The full picture,
+      including the visa steps, is in the <a href="#travel">travel section</a>.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Should I bring a gift?</summary>
+      <div class="a"><p><strong>Your presence at our wedding is the greatest present.</strong> A lot of
+      you are crossing continents and burning precious annual leave to be with us, and that is already
+      so much more than we&rsquo;d ever ask for.</p>
+      <p>If you&rsquo;d still like to give something, we&rsquo;d be really grateful for a contribution towards
+      the start of our next chapter together. We&rsquo;ll share how closer to the day.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>Still got a question?</summary>
+      <div class="a"><p>Get in touch with Athena (likely more helpful) or Uday (likely less helpful).</p></div>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="rule"></div>
+  <div class="names">Athena <em>and</em> Uday</div>
+  <div class="meta">Udaipur · 14 – 15 January 2027</div>
+</footer>
+
+<!-- ═══ mobile tab bar ═══ -->
+<nav class="tabbar" aria-label="Sections">
+  <a href="#home" class="active"><svg viewBox="0 0 24 24"><path d="M4 21v-8c0-5 3.6-9 8-9s8 4 8 9v8"/><path d="M2 21h20M9 21v-4a3 3 0 0 1 6 0v4"/></svg>Home</a>
+  <a href="#schedule"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Schedule</a>
+  <a href="#wardrobe"><svg viewBox="0 0 24 24"><path d="M12 7a2 2 0 1 0-2-2.2"/><path d="M12 7v1.6l8.6 6.8a1.1 1.1 0 0 1-.7 2H4.1a1.1 1.1 0 0 1-.7-2L12 8.6"/></svg>Wardrobe</a>
+  <a href="#travel"><svg viewBox="0 0 24 24"><path d="M10.5 13.5 3 11l1.5-1.5L10 10l4.5-4.5a1.6 1.6 0 0 1 2.3 2.3L12.5 12l.5 5.5L11.5 19l-2.5-6.5"/><path d="M4 20h16"/></svg>Travel</a>
+  <a href="#faq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.3a2.5 2.5 0 1 1 3.4 2.3c-.8.3-.9 1-.9 1.7"/><path d="M12 16.8v.2"/></svg>FAQ</a>
+</nav>
+
+<script>
+(function(){
+  "use strict";
+
+  /* countdown */
+  var el = document.getElementById("countdown");
+  var start = new Date(2027, 0, 14);
+  var end = new Date(2027, 0, 16);
+  var now = new Date();
+  if (now < start) {
+    var days = Math.ceil((start - now) / 86400000);
+    el.textContent = days + (days === 1 ? " day to go" : " days to go");
+  } else if (now < end) {
+    el.textContent = "It is wedding week";
+  } else {
+    el.textContent = "Married · 15 January 2027";
+  }
+
+  /* scroll-spy for both navs */
+  var links = document.querySelectorAll(".tabbar a, .topnav .links a");
+  var sections = document.querySelectorAll("section[id]");
+  function setActive(id) {
+    links.forEach(function(a){
+      a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+    });
+  }
+  if ("IntersectionObserver" in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) setActive(e.target.id);
+      });
+    }, { rootMargin: "-35% 0px -60% 0px" });
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
