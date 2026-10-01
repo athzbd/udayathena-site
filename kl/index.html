@@ -52,8 +52,11 @@
 
   /* ═══ nav ═══ */
   .tabbar{position:fixed; left:0; right:0; bottom:0; z-index:90; display:flex;
-    background:rgba(250,245,236,.94); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
-    border-top:1px solid #E2D3C4; padding-bottom:env(safe-area-inset-bottom)}
+    background:#FAF5EC; border-top:1px solid #E2D3C4; padding-bottom:env(safe-area-inset-bottom);
+    transform:translateZ(0)}
+  /* when the phone's own browser toolbar slides in and lifts the bar, keep a solid ivory
+     strip underneath so no page content shows through the gap */
+  .tabbar::after{content:""; position:absolute; left:0; right:0; top:100%; height:140px; background:#FAF5EC}
   .tabbar a{position:relative; flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;
     padding:10px 2px 8px; text-decoration:none; color:rgba(62,13,19,.42); font-size:10px;
     font-weight:600; letter-spacing:.16em; text-transform:uppercase; transition:color .2s}
@@ -128,7 +131,7 @@
   .fact .n{font-size:15px; color:var(--soft); font-style:italic; margin-top:2px}
 
   /* ═══ schedule ═══ */
-  #schedule{padding:96px 0 90px}
+  #schedule{padding:0 0 90px}
   .icons{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; max-width:560px; margin:0 auto}
   .icons > div{display:flex; flex-direction:column; align-items:center}
   .icons svg{width:62px; height:62px; stroke:currentColor; fill:none; stroke-width:1; stroke-linecap:round; stroke-linejoin:round}
@@ -164,8 +167,11 @@
   /* travel photo: anchor on the couple (~57% down the photo) so they sit at the same spot at every
      width, and lift the title into the top of the banner, above them */
   .band img.travel-img{object-position:center 57%}
-  .band:has(.travel-img){align-items:flex-start; min-height:clamp(420px,62svh,600px)}
-  .band:has(.travel-img) .in{padding-top:clamp(30px,6svh,56px)}
+  .band.lift{align-items:flex-start; min-height:clamp(420px,62svh,600px)}
+  .band.lift .in{padding-top:clamp(30px,6svh,56px)}
+  .band img.weekend-img{object-position:center 58%}
+  .band img.qa-img{object-position:44% 55%}
+  .sec-body{padding-top:70px}
   .band .sub{margin-top:18px; opacity:.88}
   .details{padding:90px 0 80px}
   .grid{display:grid; grid-template-columns:1fr; gap:0; max-width:920px; margin:0 auto; padding:0 26px; text-align:center}
@@ -194,7 +200,7 @@
   .weather .caps{font-size:9.5px; letter-spacing:.2em; color:var(--soft)}
 
   /* ═══ FAQ ═══ */
-  #faq{padding:96px 0 90px}
+  #faq{padding:0 0 90px}
   .faqs{text-align:left; max-width:600px; margin:0 auto}
   details.faq{border-bottom:1px solid var(--hair)}
   details.faq:first-of-type{border-top:1px solid var(--hair)}
@@ -401,8 +407,13 @@
 
 <!-- ═══════════════════ SCHEDULE ═══════════════════ -->
 <section id="schedule" class="dark">
-  <div class="wrap">
-    <h2 class="ttl"><span class="c">Our wedding</span><span class="s">Weekend</span></h2>
+  <div class="band tone lift">
+    <img src="photos/weekend.jpg" alt="" class="weekend-img" onerror="this.remove()">
+    <div class="in">
+      <h2 class="ttl"><span class="c">Our wedding</span><span class="s">Weekend</span></h2>
+    </div>
+  </div>
+  <div class="wrap sec-body">
     <p class="yours" id="yours" hidden></p>
 
     <div class="icons" id="icons"></div>
@@ -413,7 +424,7 @@
 
 <!-- ═══════════════════ TRAVEL & HOTEL ═══════════════════ -->
 <section id="travel">
-  <div class="band tone">
+  <div class="band tone lift">
     <img src="photos/travel.jpg?v=2" alt="" class="travel-img" onerror="this.remove()">
     <div class="in">
       <h2 class="ttl"><span class="c">The destination</span><span class="s">Kuala Lumpur</span></h2>
@@ -474,8 +485,13 @@
 
 <!-- ═══════════════════ FAQ ═══════════════════ -->
 <section id="faq" class="dark">
-  <div class="wrap">
-    <h2 class="ttl"><span class="c">Questions</span><span class="s">&amp; answers</span></h2>
+  <div class="band tone lift">
+    <img src="photos/qa.jpg" alt="" class="qa-img" onerror="this.remove()">
+    <div class="in">
+      <h2 class="ttl"><span class="c">Questions</span><span class="s">&amp; answers</span></h2>
+    </div>
+  </div>
+  <div class="wrap sec-body">
     <div class="faqs">
       <details class="faq">
         <summary>When do I need to RSVP by?</summary>
