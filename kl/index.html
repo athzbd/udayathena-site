@@ -107,11 +107,11 @@
 
   /* ═══ locked until an invitation is found ═══ */
   body.locked #schedule, body.locked #travel, body.locked #faq, body.locked [data-gated]{display:none!important}
-  .hero-cta{display:inline-block; margin-top:34px; padding:17px 30px; border:1px solid var(--ivory);
+  .hero-cta{display:block; width:100%; max-width:440px; margin:34px auto 0; box-sizing:border-box; text-align:center; padding:17px 30px; border:1px solid var(--ivory);
     background:var(--ivory); color:var(--wine); text-decoration:none; text-shadow:none;
     font-size:12px; letter-spacing:.3em; text-transform:uppercase; font-weight:600; transition:.2s}
   .hero-cta:hover{background:transparent; color:var(--ivory)}
-  @media(max-width:480px){.hero-cta{padding:16px 20px; font-size:11px; letter-spacing:.2em; white-space:nowrap}}
+  @media(max-width:600px){.hero-cta{max-width:none; padding:18px 12px; font-size:11.5px; letter-spacing:.22em}}
   .hero-by{margin-top:14px; font-size:10px; opacity:.85}
 
   /* ═══ welcome ═══ */
@@ -647,10 +647,6 @@
     renderSchedule(party ? eventsFor(party) : []);
     var y = $("yours");
     y.hidden = !party;
-    var cta = $("hero-cta"), replied = party && party.guests.some(function(g){ return g.responded_at; });
-    cta.textContent = !party ? "RSVP & unlock your schedule" : replied ? "View your schedule" : "Reply now";
-    cta.setAttribute("href", replied ? "#schedule" : "#rsvp");
-    $("hero-by").hidden = !!replied;
     if (party) {
       y.innerHTML = "Your schedule, " + esc(names(party)) + ". <a href=\"#\" id=\"not-you\">Not you?</a>";
       $("not-you").onclick = function(e){ e.preventDefault(); forget(); $("rsvp").scrollIntoView(); $("r-q").focus(); };
