@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#3E0D13">
-<meta name="description" content="Athena & Uday are getting married — Kuala Lumpur, 8–9 January 2027. The schedule, travel, FAQ and RSVP.">
+<meta name="description" content="Athena & Uday are getting married in Kuala Lumpur, 8–9 January 2027. The schedule, travel, FAQ and RSVP.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://udayathena.info/kl/">
 <meta property="og:title" content="Athena & Uday · Kuala Lumpur">
-<meta property="og:description" content="8–9 January 2027 — the schedule, travel, FAQ and RSVP.">
+<meta property="og:description" content="8–9 January 2027. The schedule, travel, FAQ and RSVP.">
 <meta property="og:image" content="https://udayathena.info/kl/photos/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -25,7 +25,7 @@
     --bg:var(--ivory); --ink:var(--wine); --soft:#86655F; --hair:#E2D3C4;
     --nav-h:58px;
   }
-  /* burgundy sections — text flips to ivory */
+  /* burgundy sections: text flips to ivory */
   .dark{--bg:var(--wine); --ink:var(--ivory); --soft:rgba(250,245,236,.68); --hair:rgba(250,245,236,.24);
     background:var(--bg); color:var(--ink)}
   *{margin:0;padding:0;box-sizing:border-box}
@@ -105,8 +105,17 @@
   .scroll-cue::before{content:""; width:1px; height:40px; background:currentColor; opacity:.6}
   @media(min-width:820px){.scroll-cue{bottom:30px}}
 
+  /* ═══ locked until an invitation is found ═══ */
+  body.locked #schedule, body.locked #travel, body.locked #faq, body.locked [data-gated]{display:none!important}
+  .hero-cta{display:inline-block; margin-top:34px; padding:17px 30px; border:1px solid var(--ivory);
+    background:var(--ivory); color:var(--wine); text-decoration:none; text-shadow:none;
+    font-size:12px; letter-spacing:.3em; text-transform:uppercase; font-weight:600; transition:.2s}
+  .hero-cta:hover{background:transparent; color:var(--ivory)}
+  @media(max-width:480px){.hero-cta{padding:16px 20px; font-size:11px; letter-spacing:.2em; white-space:nowrap}}
+  .hero-by{margin-top:14px; font-size:10px; opacity:.85}
+
   /* ═══ welcome ═══ */
-  .welcome{padding:96px 0 90px}
+  .welcome{padding:90px 0 20px}
   .welcome p.body{max-width:520px; margin:0 auto 16px}
   .welcome .sig{font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:32px; letter-spacing:.02em; line-height:1.2; margin-top:26px}
   .facts{display:grid; grid-template-columns:1fr; margin:62px auto 0; max-width:640px;
@@ -132,6 +141,7 @@
   .event{margin-top:40px}
   .event h3{font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:clamp(32px,7.6vw,42px); line-height:1.15}
   .event .meta{color:var(--soft); margin-top:6px}
+  .event .meta a{color:inherit; text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px}
   .event .desc{max-width:460px; margin:14px auto 0}
   .event .dress{margin-top:14px; font-style:italic}
   .event .dress .caps{font-style:normal; font-size:10px; color:var(--soft); display:block; margin-bottom:2px}
@@ -192,7 +202,7 @@
   details.faq .a p + p{margin-top:10px}
 
   /* ═══ RSVP ═══ */
-  #rsvp{padding:96px 0 100px}
+  #rsvp{padding:40px 0 100px}
   .reply-t{line-height:1; margin-bottom:10px}
   .reply-t .script{display:block; font-size:clamp(42px,10vw,64px); line-height:1.1}
   .reply-by{color:var(--soft); margin-bottom:34px}
@@ -285,16 +295,16 @@
   footer .caps{margin-top:14px; opacity:.72; font-size:10.5px}
 </style>
 </head>
-<body>
+<body class="locked">
 
 <nav class="topnav" id="topnav" aria-label="Site">
   <a class="brand" href="#home">A &amp; U</a>
   <div class="links">
     <a href="#home" class="active">Home</a>
-    <a href="#schedule">Schedule</a>
-    <a href="#travel">Travel</a>
-    <a href="#faq">FAQ</a>
     <a href="#rsvp">RSVP</a>
+    <a href="#schedule" data-gated>Schedule</a>
+    <a href="#travel" data-gated>Travel</a>
+    <a href="#faq" data-gated>FAQ</a>
   </div>
 </nav>
 
@@ -307,146 +317,22 @@
       <h1 class="names">Athena<span class="amp">&amp;</span>Uday</h1>
       <p class="when caps">8 – 9 January 2027 · Kuala Lumpur</p>
       <span class="hero-count caps" id="countdown"></span>
+      <a class="hero-cta" id="hero-cta" href="#rsvp">RSVP &amp; unlock your schedule</a>
+      <p class="hero-by caps" id="hero-by">Kindly reply by 15 October 2026</p>
     </div>
     <div class="scroll-cue caps">Scroll</div>
   </header>
 
   <div class="welcome">
     <div class="wrap">
-      <p class="body">Welcome to Kuala Lumpur — Athena&rsquo;s home town, and the first stop on our wedding
-      journey.</p>
-      <p class="body">For many of you this will be a first trip to Malaysia, and we couldn&rsquo;t be happier that
-      you&rsquo;re making it for us. Come for the celebrations; stay for the food, the heat and
-      the best breakfast of your life.</p>
+      <p class="body">Welcome to Kuala Lumpur! We are so excited to have you in Athena&rsquo;s hometown,
+      and the first stop on our wedding journey.</p>
+      <p class="body">For some of you this will be a first trip to Malaysia, and we couldn&rsquo;t be
+      happier that you&rsquo;re making it for us. Come for the celebrations; stay for the heat and the
+      best food of your life!</p>
       <p class="body" style="margin-top:22px">With love,</p>
       <p class="sig">Athena &amp; Uday</p>
 
-      <div class="facts">
-        <div class="fact"><div class="k caps">When</div><div class="v">8 – 9 January 2027</div></div>
-        <div class="fact"><div class="k caps">Where</div><div class="v">Kuala Lumpur</div></div>
-        <div class="fact"><div class="k caps">Kindly reply by</div><div class="v">15 October 2026</div>
-          <div class="n"><a href="#rsvp">Reply online</a></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ SCHEDULE ═══════════════════ -->
-<section id="schedule" class="dark">
-  <div class="wrap">
-    <h2 class="ttl"><span class="c">Our wedding</span><span class="s">Weekend</span></h2>
-    <p class="yours" id="yours" hidden></p>
-
-    <div class="icons" id="icons"></div>
-    <div id="days"></div>
-
-    <form class="unlock" id="unlock" autocomplete="off" novalidate>
-      <p class="caps">Your personal schedule</p>
-      <p class="u-line">Enter your name or invitation code to see the full schedule for your
-      invitation.</p>
-      <label class="field"><span class="caps">Your name or code</span>
-        <input id="u-q" type="text" placeholder="e.g. Arjun Menon" autocapitalize="words" spellcheck="false" enterkeyhint="go"></label>
-      <button class="btn" type="submit">Unlock my schedule</button>
-      <p class="rnote" id="u-note" aria-live="polite"></p>
-      <div class="pick" id="u-pick" hidden></div>
-    </form>
-  </div>
-</section>
-
-<!-- ═══════════════════ TRAVEL & HOTEL ═══════════════════ -->
-<section id="travel">
-  <div class="band tone">
-    <img src="photos/travel.jpg" alt="" style="object-position:center 72%" onerror="this.remove()">
-    <div class="in">
-      <h2 class="ttl"><span class="c">The destination</span><span class="s">Kuala Lumpur</span></h2>
-      <p class="sub caps">Travel &amp; where to stay</p>
-    </div>
-  </div>
-
-  <div class="details">
-    <div class="grid">
-      <div class="blk">
-        <h3>Getting here</h3>
-        <p>Fly into <strong>Kuala Lumpur International Airport (KUL)</strong> — direct from London, or
-        via the Gulf, Singapore or India.</p>
-        <p>The city is about an hour away by car, or take the <strong>KLIA Ekspres</strong> train to
-        KL Sentral in around 30 minutes, then a short taxi ride.</p>
-      </div>
-      <div class="blk">
-        <h3>Getting around</h3>
-        <p>Download <strong>Grab</strong> before you land — it&rsquo;s how everyone gets around KL:
-        cheap, quick and reliable.</p>
-      </div>
-      <div class="blk wide">
-        <h3>Where to stay</h3>
-        <p>The reception is at the <strong>Shangri-La Kuala Lumpur</strong> on Jalan Sultan Ismail,
-        in the heart of the city — and we&rsquo;ve secured a special rate for our guests.</p>
-        <div class="rates">
-          <div><span>Executive Room</span><span>RM 580<sup>++</sup></span></div>
-          <div><span>Horizon Room</span><span>RM 780<sup>++</sup></span></div>
-          <div><span>Premier Selection Suite</span><span>RM 980<sup>++</sup></span></div>
-        </div>
-        <p class="rates-note">Per room, per night · single or double occupancy · ++ means service
-        charge and tax are added</p>
-        <p>To book, please get in touch with Athena.</p>
-      </div>
-      <div class="blk wide">
-        <h3>Before you fly</h3>
-        <ol>
-          <li><strong>Check your passport</strong> — it needs at least six months&rsquo; validity on arrival.</li>
-          <li><strong>Visas</strong> — UK passport holders don&rsquo;t need one for a short visit. Travelling on another passport? Check your own rules early, and let us know if we can help.</li>
-          <li><strong>Digital Arrival Card</strong> — most visitors must complete one online within the three days before landing. It&rsquo;s free on the official site, <a href="https://imigresen-online.imi.gov.my/mdac/main" target="_blank" rel="noopener">imigresen-online.imi.gov.my</a>; ignore any lookalike that charges a fee.</li>
-        </ol>
-      </div>
-      <div class="blk wide">
-        <h3>The weather</h3>
-        <p>Hot and humid, with the odd tropical downpour in the afternoon. Pack light layers — and
-        something for the air-conditioning.</p>
-        <div class="weather">
-          <div><div class="t">31–33°C</div><div class="caps">Daytime</div></div>
-          <div><div class="t">7:15 pm</div><div class="caps">Sunset</div></div>
-          <div><div class="t">23–25°C</div><div class="caps">After dark</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ FAQ ═══════════════════ -->
-<section id="faq" class="dark">
-  <div class="wrap">
-    <h2 class="ttl"><span class="c">Questions</span><span class="s">&amp; answers</span></h2>
-    <div class="faqs">
-      <details class="faq">
-        <summary>When do I need to RSVP by?</summary>
-        <div class="a"><p><strong>Please RSVP by 15 October 2026</strong> — <a href="#rsvp">online, here</a>.</p></div>
-      </details>
-      <details class="faq">
-        <summary>Which events am I invited to?</summary>
-        <div class="a"><p>Your invitation says — and if you enter your name on <a href="#schedule">the
-        schedule</a>, it unlocks your personal schedule with every event you&rsquo;re invited to.</p></div>
-      </details>
-      <details class="faq">
-        <summary>What should I wear?</summary>
-        <div class="a"><p>Each event&rsquo;s dress code is on <a href="#schedule">the schedule</a>.</p></div>
-      </details>
-      <details class="faq">
-        <summary>Can I bring a plus one?</summary>
-        <div class="a"><p>Unfortunately we&rsquo;ve had to keep the numbers tight, so we can only welcome the
-        names on your invitation.</p></div>
-      </details>
-      <details class="faq">
-        <summary>Should I bring a gift?</summary>
-        <div class="a"><p><strong>Your presence at our wedding is the greatest present.</strong> A lot of
-        you are crossing continents and burning precious annual leave to be with us, and that is already
-        so much more than we&rsquo;d ever ask for.</p>
-        <p>If you&rsquo;d still like to give something, we&rsquo;d be really grateful for a contribution towards
-        the start of our next chapter together. We&rsquo;ll share how closer to the day.</p></div>
-      </details>
-      <details class="faq">
-        <summary>Still got a question?</summary>
-        <div class="a"><p>Get in touch with Athena (likely more helpful) or Uday (likely less helpful).</p></div>
-      </details>
     </div>
   </div>
 </section>
@@ -464,8 +350,9 @@
     </ol>
 
     <form id="r-find" autocomplete="off" novalidate>
-      <p class="rintro">Enter your first and last name as they appear on your invitation — or the
-      invitation code, if you have one.</p>
+      <p class="rintro">Find your invitation to reply. It also unlocks your schedule, travel
+      details and FAQs. Enter your first and last name as they appear on your invitation, or your
+      invitation code.</p>
       <label class="field"><span class="caps">Your name or code</span>
         <input id="r-q" type="text" placeholder="e.g. Arjun Menon" autocapitalize="words" spellcheck="false" enterkeyhint="search"></label>
       <button class="btn" type="submit">Find my invitation</button>
@@ -499,12 +386,124 @@
   </div>
 </section>
 
+<!-- ═══════════════════ SCHEDULE ═══════════════════ -->
+<section id="schedule" class="dark">
+  <div class="wrap">
+    <h2 class="ttl"><span class="c">Our wedding</span><span class="s">Weekend</span></h2>
+    <p class="yours" id="yours" hidden></p>
+
+    <div class="icons" id="icons"></div>
+    <div id="days"></div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ TRAVEL & HOTEL ═══════════════════ -->
+<section id="travel">
+  <div class="band tone">
+    <img src="photos/travel.jpg" alt="" style="object-position:center 72%" onerror="this.remove()">
+    <div class="in">
+      <h2 class="ttl"><span class="c">The destination</span><span class="s">Kuala Lumpur</span></h2>
+      <p class="sub caps">Travel &amp; where to stay</p>
+    </div>
+  </div>
+
+  <div class="details">
+    <div class="grid">
+      <div class="blk">
+        <h3>Getting here</h3>
+        <p>Fly directly to <strong>Kuala Lumpur International Airport (KUL)</strong>.</p>
+        <p>The city is about an hour away by car, or take the <strong>KLIA Ekspres</strong> train to
+        KL Sentral in around 30 minutes, then a short taxi ride.</p>
+      </div>
+      <div class="blk">
+        <h3>Getting around</h3>
+        <p>Download <a href="https://www.grab.com/my/download/" target="_blank" rel="noopener"><strong>Grab</strong></a>
+        before you land. It&rsquo;s Malaysia&rsquo;s answer to Uber, and the easiest way to get around
+        KL: quick, cheap and reliable.</p>
+      </div>
+      <div class="blk wide">
+        <h3>Where to stay</h3>
+        <p>There are plenty of hotels and Airbnbs all over the city, so stay wherever suits you best.
+        If you&rsquo;d like to be close to the party, we&rsquo;ve secured a special rate for our guests at the
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Shangri-La+Kuala+Lumpur%2C+11+Jalan+Sultan+Ismail" target="_blank" rel="noopener"><strong>Shangri-La Kuala Lumpur</strong></a>,
+        where the reception is being held.</p>
+        <div class="rates">
+          <div><span>Executive Room</span><span>RM 580<sup>++</sup></span></div>
+          <div><span>Horizon Room</span><span>RM 780<sup>++</sup></span></div>
+          <div><span>Premier Selection Suite</span><span>RM 980<sup>++</sup></span></div>
+        </div>
+        <p class="rates-note">Per room, per night · single or double occupancy · ++ means service
+        charge and tax are added</p>
+        <p>To book, please get in touch with Athena.</p>
+      </div>
+      <div class="blk wide">
+        <h3>Before you fly</h3>
+        <ol>
+          <li><strong>Check your passport:</strong> it needs at least six months&rsquo; validity on arrival.</li>
+          <li><strong>Visas:</strong> UK passport holders don&rsquo;t need one for a short visit. Travelling on another passport? Check your own rules early, and let us know if we can help.</li>
+          <li><strong>Digital Arrival Card:</strong> most visitors must complete one online within the <strong>three days</strong> before landing: <a href="https://imigresen-online.imi.gov.my/mdac/main" target="_blank" rel="noopener">imigresen-online.imi.gov.my</a></li>
+        </ol>
+      </div>
+      <div class="blk wide">
+        <h3>The weather</h3>
+        <p>Hot and humid, with a potential tropical downpour in the afternoon. Pack light layers and
+        something for our extra strong Malaysian air-conditioning.</p>
+        <div class="weather">
+          <div><div class="t">31–33°C</div><div class="caps">Daytime</div></div>
+          <div><div class="t">7:15 pm</div><div class="caps">Sunset</div></div>
+          <div><div class="t">23–25°C</div><div class="caps">After dark</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section id="faq" class="dark">
+  <div class="wrap">
+    <h2 class="ttl"><span class="c">Questions</span><span class="s">&amp; answers</span></h2>
+    <div class="faqs">
+      <details class="faq">
+        <summary>When do I need to RSVP by?</summary>
+        <div class="a"><p><strong>Please RSVP by 15 October 2026</strong>, <a href="#rsvp">online here</a>.</p></div>
+      </details>
+      <details class="faq">
+        <summary>Where are the best places to eat in KL?</summary>
+        <div class="a"><p>Athena has made a guide to all her favourites: <a href="https://athzbd.github.io/kl-recs/" target="_blank" rel="noopener">see Athena&rsquo;s KL recommendations</a>.</p></div>
+      </details>
+      <details class="faq">
+        <summary>What should I wear?</summary>
+        <div class="a"><p>Each event&rsquo;s dress code is on <a href="#schedule">the schedule</a>.</p></div>
+      </details>
+      <details class="faq">
+        <summary>Can I bring a plus one?</summary>
+        <div class="a"><p>Unfortunately we&rsquo;ve had to keep the numbers tight, so we can only welcome the
+        names on your invitation.</p></div>
+      </details>
+      <details class="faq">
+        <summary>Should I bring a gift?</summary>
+        <div class="a"><p><strong>Your presence at our wedding is the greatest present.</strong> A lot of
+        you are crossing continents and burning precious annual leave to be with us, and that is already
+        so much more than we&rsquo;d ever ask for.</p>
+        <p>If you&rsquo;d still like to give something, we&rsquo;d be really grateful for a contribution towards
+        the start of our next chapter together. We&rsquo;ll share how closer to the day.</p></div>
+      </details>
+      <details class="faq">
+        <summary>Still got a question?</summary>
+        <div class="a"><p>Get in touch with Athena (likely more helpful) or Uday (likely less helpful).</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <footer class="dark">
   <p class="script">Athena &amp; Uday</p>
   <p class="caps">Kuala Lumpur · 8 – 9 January 2027</p>
 </footer>
 
-<!-- keepsake itinerary — drawn off-screen, turned into a PDF on request -->
+<!-- keepsake itinerary: drawn off-screen, turned into a PDF on request -->
 <div id="keep" aria-hidden="true">
   <div class="k-top">
     <img src="photos/logo-cream.png" alt="">
@@ -524,38 +523,24 @@
 
 <nav class="tabbar" aria-label="Sections">
   <a href="#home" class="active"><svg viewBox="0 0 24 24"><path d="M4 21v-8c0-5 3.6-9 8-9s8 4 8 9v8"/><path d="M2 21h20M9 21v-4a3 3 0 0 1 6 0v4"/></svg>Home</a>
-  <a href="#schedule"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Schedule</a>
-  <a href="#travel"><svg viewBox="0 0 24 24"><path d="M10.5 13.5 3 11l1.5-1.5L10 10l4.5-4.5a1.6 1.6 0 0 1 2.3 2.3L12.5 12l.5 5.5L11.5 19l-2.5-6.5"/><path d="M4 20h16"/></svg>Travel</a>
-  <a href="#faq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.3a2.5 2.5 0 1 1 3.4 2.3c-.8.3-.9 1-.9 1.7"/><path d="M12 16.8v.2"/></svg>FAQ</a>
   <a href="#rsvp"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>RSVP</a>
+  <a href="#schedule" data-gated><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Schedule</a>
+  <a href="#travel" data-gated><svg viewBox="0 0 24 24"><path d="M10.5 13.5 3 11l1.5-1.5L10 10l4.5-4.5a1.6 1.6 0 0 1 2.3 2.3L12.5 12l.5 5.5L11.5 19l-2.5-6.5"/><path d="M4 20h16"/></svg>Travel</a>
+  <a href="#faq" data-gated><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.3a2.5 2.5 0 1 1 3.4 2.3c-.8.3-.9 1-.9 1.7"/><path d="M12 16.8v.2"/></svg>FAQ</a>
 </nav>
 
 <script>
 (function(){
   "use strict";
 
-  /* Supabase — public anon key; guests can only call kl_lookup / kl_submit
+  /* Supabase: public anon key; guests can only call kl_lookup / kl_submit
      (see kl-rsvp-setup.sql). The guest table itself is not readable. */
   var SB_URL = "https://oweeqpmwmlmnrqshzywj.supabase.co";
   var SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93ZWVxcG13bWxtbnJxc2h6eXdqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3MzcxMTgsImV4cCI6MjA5MTMxMzExOH0.BYv6Qva0fZDu-bSZI8shCEp8gQ70UPyZ9vD1C-L5GUY";
 
-  /* The Celebration and Reception are public. Any other event's details (the Nikah)
-     come from the database (kl_events) only when someone unlocks an invitation that
-     includes it — so they're never in this page's source. */
-  var EVENTS = {
-    celebration: { sort: 2, name: "The Nikah Celebration", label: "Celebration", short: "Fri · 7 pm",
-      day: "Friday 8 January", day_key: 8, time: "7:00 pm", venue: "Tanah Abang",
-      descr: "Dinner, music and plenty of toasts as we celebrate our first evening as husband and wife.",
-      dress: "Smart casual",
-      cal_start: "20270108T110000Z", cal_end: "20270108T160000Z", cal_where: "Tanah Abang, Kuala Lumpur" },
-    reception: { sort: 3, name: "The Reception", label: "Reception", short: "Sat · 7 pm",
-      day: "Saturday 9 January", day_key: 9, time: "7:00 pm", venue: "Shangri-La Kuala Lumpur",
-      descr: "Dinner, speeches and dancing — everyone we love, in one room.",
-      dress: "Formal or traditional — suits for the gentlemen, long dresses for the ladies",
-      cal_start: "20270109T110000Z", cal_end: "20270109T160000Z",
-      cal_where: "Shangri-La Kuala Lumpur, 11 Jalan Sultan Ismail" }
-  };
-  var PUBLIC = ["celebration", "reception"];
+  /* No event details ship with the page. They come from the database (kl_events)
+     only when someone finds their invitation, and only for the events it includes. */
+  var EVENTS = {};
   function learn(party){
     if (party && party.events) Object.keys(party.events).forEach(function(k){ EVENTS[k] = party.events[k]; });
     return party;
@@ -629,12 +614,13 @@
         lastDay = e.day_key;
       }
       days += '<article class="event" data-ev="' + esc(k) + '"><h3>' + esc(e.name) + "</h3>" +
-        '<p class="meta caps">' + esc(e.time) + " · " + esc(e.venue) + "</p>" +
-        '<p class="desc">' + esc(e.descr) + "</p>" +
+        '<p class="meta caps">' + esc(e.time) + " · " +
+          (e.map_url ? '<a href="' + esc(e.map_url) + '" target="_blank" rel="noopener">' + esc(e.venue) + "</a>" : esc(e.venue)) + "</p>" +
+        (e.descr ? '<p class="desc">' + esc(e.descr) + "</p>" : "") +
         '<p class="dress"><span class="caps">Dress code</span>' + esc(e.dress) + "</p></article>";
     });
     $("icons").innerHTML = icons;
-    $("icons").style.gridTemplateColumns = "repeat(" + keys.length + ",1fr)";
+    $("icons").style.gridTemplateColumns = "repeat(" + Math.max(keys.length, 1) + ",1fr)";
     $("icons").style.maxWidth = (keys.length * 187) + "px";
     $("days").innerHTML = days + (lastDay !== null ? "</div>" : "");
   }
@@ -644,50 +630,20 @@
     return byOrder(Object.keys(set));
   }
   function personalise(party){
-    renderSchedule(party ? eventsFor(party) : PUBLIC);
-    $("unlock").hidden = !!party;
+    document.body.classList.toggle("locked", !party);
+    renderSchedule(party ? eventsFor(party) : []);
     var y = $("yours");
     y.hidden = !party;
+    var cta = $("hero-cta"), replied = party && party.guests.some(function(g){ return g.responded_at; });
+    cta.textContent = !party ? "RSVP & unlock your schedule" : replied ? "View your schedule" : "Reply now";
+    cta.setAttribute("href", replied ? "#schedule" : "#rsvp");
+    $("hero-by").hidden = !!replied;
     if (party) {
       y.innerHTML = "Your schedule, " + esc(names(party)) + ". <a href=\"#\" id=\"not-you\">Not you?</a>";
-      $("not-you").onclick = function(e){
-        e.preventDefault(); forget();
-        $("unlock").scrollIntoView({ block: "center" }); $("u-q").focus();
-      };
+      $("not-you").onclick = function(e){ e.preventDefault(); forget(); $("rsvp").scrollIntoView(); $("r-q").focus(); };
     }
   }
   personalise(null);
-
-  $("unlock").addEventListener("submit", function(e){
-    e.preventDefault();
-    var q = $("u-q").value.trim(), note = $("u-note"), pick = $("u-pick");
-    if (!q) return;
-    pick.hidden = true; pick.innerHTML = "";
-    note.className = "rnote"; note.textContent = "Looking…";
-    rpc("kl_lookup", { q: q }).then(function(res){
-      note.textContent = "";
-      if (!res || !res.length) {
-        note.className = "rnote err";
-        note.textContent = /\s/.test(q)
-          ? "We couldn’t find that name — try it exactly as it appears on your invitation, or use your code."
-          : "Please type your first and last name, or the code from your invitation.";
-        return;
-      }
-      function go(p){ open(learn(p), true); $("schedule").scrollIntoView(); }
-      if (res.length === 1) return go(res[0]);
-      note.textContent = "Which invitation is yours?";
-      res.forEach(function(p){
-        var b = document.createElement("button"); b.type = "button";
-        b.textContent = p.guests.map(fullName).join(" & ");
-        b.onclick = function(){ go(p); };
-        pick.appendChild(b);
-      });
-      pick.hidden = false;
-    }).catch(function(){
-      note.className = "rnote err";
-      note.textContent = "Something went wrong — please try again in a moment.";
-    });
-  });
 
   /* ─── RSVP ─── */
   var current = null;
@@ -708,7 +664,7 @@
     var qs = document.querySelectorAll("#r-guests .rq"), n = 0;
     qs.forEach(function(q){ if (q.querySelector("input:checked")) n++; });
     var c = $("r-count");
-    c.textContent = n === qs.length ? "All answered — ready to send" : n + " of " + qs.length + " answered";
+    c.textContent = n === qs.length ? "All answered, ready to send" : n + " of " + qs.length + " answered";
     c.classList.toggle("ok", n === qs.length);
   }
   function names(party){
@@ -724,7 +680,7 @@
       note.textContent = "";
       if (!res || !res.length) {
         note.textContent = /\s/.test(q.trim())
-          ? "We couldn’t find that name. Try it exactly as it appears on your invitation, or use your code — and if you’re still stuck, message Athena."
+          ? "We couldn’t find that name. Try it exactly as it appears on your invitation, or use your code. Still stuck? Message Athena."
           : "Please type your first and last name (e.g. Arjun Menon), or the code from your invitation.";
         return;
       }
@@ -740,7 +696,7 @@
       pick.hidden = false;
     }).catch(function(){
       note.className = "rnote err";
-      note.textContent = "Something went wrong — please try again in a moment.";
+      note.textContent = "Something went wrong. Please try again in a moment.";
     });
   }
 
@@ -790,8 +746,8 @@
       return evs(g).some(function(ev){ return g[ev] === true; });
     });
     $("r-thanks").textContent = anyYes
-      ? "Thank you — we can’t wait to celebrate with you."
-      : "Thank you for letting us know — you’ll be missed.";
+      ? "Thank you! We can’t wait to celebrate with you."
+      : "Thank you for letting us know. You’ll be missed.";
     var when = party.guests.map(function(g){ return g.responded_at; }).filter(Boolean).sort().pop();
     var d = when ? new Date(when) : null;
     $("r-received").textContent = "Your reply has been received" +
@@ -834,7 +790,7 @@
     });
     if (missing) {
       note.className = "rnote err";
-      note.textContent = "A few events still need an answer — they’re marked in red.";
+      note.textContent = "A few events still need an answer. They’re marked in red.";
       var first = document.querySelector("#r-guests .rq.missing");
       if (first) first.scrollIntoView({ block: "center" });
       return;
@@ -846,13 +802,13 @@
       .catch(function(){
         btn.disabled = false;
         note.className = "rnote err";
-        note.textContent = "That didn’t send — please check your connection and try again.";
+        note.textContent = "That didn’t send. Please check your connection and try again.";
       });
   });
 
   $("r-edit").onclick = function(){ show.last = "edit"; open(current); };
 
-  /* keepsake PDF — libraries load only when someone asks for it */
+  /* keepsake PDF: libraries load only when someone asks for it */
   function loadScript(src){
     return new Promise(function(ok, fail){
       var t = document.createElement("script"); t.src = src; t.onload = ok; t.onerror = fail;
@@ -893,7 +849,7 @@
         pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", 0, 0, 210, 297);
         pdf.save("Athena-and-Uday-KL-itinerary.pdf");
       })
-      .catch(function(){ alert("Sorry — the itinerary couldn’t be made just now. Please try again."); })
+      .catch(function(){ alert("Sorry, the itinerary couldn’t be made just now. Please try again."); })
       .then(function(){ btn.disabled = false; btn.textContent = label; });
   };
 
@@ -921,7 +877,6 @@
   function forget(){
     current = null; store(STORE, null); personalise(null);
     $("r-q").value = ""; $("r-find-note").textContent = ""; $("r-pick").hidden = true;
-    $("u-q").value = ""; $("u-note").textContent = ""; $("u-pick").hidden = true;
     show("find");
   }
   document.querySelectorAll("[data-restart]").forEach(function(b){
