@@ -161,6 +161,11 @@
   .band{min-height:clamp(320px,52svh,520px); display:flex; align-items:center; justify-content:center; text-align:center}
   .band .in{padding:60px 22px}
   .band .ttl{margin:0}
+  /* travel photo: anchor on the couple (~57% down the photo) so they sit at the same spot at every
+     width, and lift the title into the top of the banner, above them */
+  .band img.travel-img{object-position:center 57%}
+  .band:has(.travel-img){align-items:flex-start; min-height:clamp(420px,62svh,600px)}
+  .band:has(.travel-img) .in{padding-top:clamp(30px,6svh,56px)}
   .band .sub{margin-top:18px; opacity:.88}
   .details{padding:90px 0 80px}
   .grid{display:grid; grid-template-columns:1fr; gap:0; max-width:920px; margin:0 auto; padding:0 26px; text-align:center}
@@ -231,20 +236,23 @@
     padding:16px 0; cursor:pointer; color:var(--wine); font-family:'Cormorant Garamond',serif; font-size:22px}
   .pick button:hover{font-style:italic}
   .rhello{font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:clamp(30px,7.4vw,40px); line-height:1.25}
-  .rg{padding:34px 0 30px; border-bottom:1px solid var(--hair)}
-  .rg h3{font-weight:400; font-size:15px; letter-spacing:.3em; text-transform:uppercase; margin-bottom:10px}
+  .rg{padding:30px 0 26px; border-top:1px solid var(--hair)}
+  .rg-name{font-weight:400; font-size:14px; letter-spacing:.32em; text-transform:uppercase; margin-bottom:6px}
   .rq{padding:14px 0}
   .rq .ev{margin-bottom:10px}
   .rq .ev b{display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:26px; line-height:1.2}
   .rq .ev span{font-size:10px; letter-spacing:.24em; text-transform:uppercase; font-weight:500; color:var(--soft)}
-  .yn{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .yn{display:flex; flex-wrap:wrap; justify-content:center; gap:6px 30px}
   .yn label{position:relative; cursor:pointer; display:flex}
   .yn input{position:absolute; opacity:0; pointer-events:none}
-  .yn span{flex:1; text-align:center; padding:14px 6px; border:1px solid var(--hair); font-size:11.5px;
-    letter-spacing:.26em; text-transform:uppercase; font-weight:500; color:var(--soft); transition:.15s}
-  .yn label:hover span{border-color:var(--wine); color:var(--wine)}
-  .yn input:checked + span{background:var(--wine); border-color:var(--wine); color:var(--ivory)}
-  .yn input:focus-visible + span{outline:1px solid var(--wine); outline-offset:3px}
+  .yn span{display:inline-flex; align-items:center; gap:10px; padding:6px 2px; font-size:19px;
+    font-style:italic; color:var(--soft); transition:color .15s}
+  .yn span::before{content:""; width:11px; height:11px; border-radius:50%; border:1px solid currentColor;
+    box-shadow:inset 0 0 0 2px var(--ivory); transition:.15s}
+  .yn label:hover span{color:var(--wine)}
+  .yn input:checked + span{color:var(--wine)}
+  .yn input:checked + span::before{background:var(--wine); border-color:var(--wine)}
+  .yn input:focus-visible + span{outline:1px solid var(--wine); outline-offset:4px}
   .rg .field{margin-top:14px}
   .steps{list-style:none; display:flex; justify-content:center; gap:0; margin:0 auto 40px; max-width:520px; font-size:9.5px; letter-spacing:.22em}
   .steps li{flex:1; padding:10px 4px 0; border-top:1px solid var(--hair); color:var(--soft); opacity:.55; counter-increment:stp}
@@ -254,7 +262,7 @@
   .steps li.past{opacity:.9}
   .rintro.small{font-size:15.5px; margin-top:22px}
   .rq .ask{font-size:17px; margin-bottom:10px}
-  .rq.missing .yn span{border-color:#9B2230}
+  .rq.missing .yn span{color:#9B2230}
   .rq.missing .ask{color:#9B2230}
   .rcount{margin-top:26px; font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--soft)}
   .rcount.ok{color:var(--wine)}
@@ -283,6 +291,8 @@
   #keep .k-ev .d{font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:var(--soft)}
   #keep .k-ev .n{font-style:italic; font-weight:300; font-size:38px; line-height:1.2; margin-top:4px}
   #keep .k-ev .m{font-size:15px; letter-spacing:.24em; text-transform:uppercase; margin-top:4px}
+  #keep .k-ev .ad{font-size:18px; margin-top:4px}
+  #keep .k-ev .ad span{display:inline-block; border-bottom:1px solid currentColor; padding-bottom:1px; line-height:1.3}
   #keep .k-ev .dr{font-style:italic; font-size:21px; margin-top:8px}
   #keep .k-ev .who{font-size:16px; color:var(--soft); margin-top:4px}
   #keep .num{font-family:'Cormorant Infant',serif}
@@ -351,9 +361,8 @@
 
     <form id="r-find" autocomplete="off" novalidate>
       <p class="rintro">Find your invitation to reply. It also unlocks your schedule, travel
-      details and FAQs. Enter your first and last name as they appear on your invitation, or your
-      invitation code.</p>
-      <label class="field"><span class="caps">Your name or code</span>
+      details and FAQs. Enter your full name as it appears on your invitation.</p>
+      <label class="field"><span class="caps">Your full name</span>
         <input id="r-q" type="text" placeholder="e.g. Arjun Menon" autocapitalize="words" spellcheck="false" enterkeyhint="search"></label>
       <button class="btn" type="submit">Find my invitation</button>
       <p class="rnote" id="r-find-note" aria-live="polite"></p>
@@ -365,7 +374,7 @@
       <p class="rintro" id="r-lead"></p>
       <div id="r-guests"></div>
       <label class="field"><span class="caps">A note for us · optional</span>
-        <textarea id="r-msg" maxlength="1000" placeholder="Arrival dates, questions, well wishes…"></textarea></label>
+        <textarea id="r-msg" maxlength="1000" placeholder="Arrival dates, questions, credit card number, mother’s maiden name…"></textarea></label>
       <p class="rcount" id="r-count" aria-live="polite"></p>
       <button class="btn" type="submit" id="r-send">Send our reply</button>
       <p class="rnote" id="r-form-note" aria-live="polite"></p>
@@ -401,7 +410,7 @@
 <!-- ═══════════════════ TRAVEL & HOTEL ═══════════════════ -->
 <section id="travel">
   <div class="band tone">
-    <img src="photos/travel.jpg" alt="" style="object-position:center 72%" onerror="this.remove()">
+    <img src="photos/travel.jpg?v=2" alt="" class="travel-img" onerror="this.remove()">
     <div class="in">
       <h2 class="ttl"><span class="c">The destination</span><span class="s">Kuala Lumpur</span></h2>
       <p class="sub caps">Travel &amp; where to stay</p>
@@ -419,13 +428,12 @@
       <div class="blk">
         <h3>Getting around</h3>
         <p>Download <a href="https://www.grab.com/my/download/" target="_blank" rel="noopener"><strong>Grab</strong></a>
-        before you land. It&rsquo;s Malaysia&rsquo;s answer to Uber, and the easiest way to get around
-        KL: quick, cheap and reliable.</p>
+        before you land. It&rsquo;s Malaysian Uber, and the best and easiest way to get around KL.</p>
       </div>
       <div class="blk wide">
         <h3>Where to stay</h3>
         <p>There are plenty of hotels and Airbnbs all over the city, so stay wherever suits you best.
-        If you&rsquo;d like to be close to the party, we&rsquo;ve secured a special rate for our guests at the
+        If you&rsquo;d like to be close to the action, we&rsquo;ve secured a special rate for our guests at the
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Shangri-La+Kuala+Lumpur%2C+11+Jalan+Sultan+Ismail" target="_blank" rel="noopener"><strong>Shangri-La Kuala Lumpur</strong></a>,
         where the reception is being held.</p>
         <div class="rates">
@@ -471,7 +479,8 @@
       </details>
       <details class="faq">
         <summary>Where are the best places to eat in KL?</summary>
-        <div class="a"><p>Athena has made a guide to all her favourites: <a href="https://athzbd.github.io/kl-recs/" target="_blank" rel="noopener">see Athena&rsquo;s KL recommendations</a>.</p></div>
+        <div class="a"><p>Finally, the question Athena has been waiting her whole life for. Please see
+        <a href="https://athzbd.github.io/kl-recs/" target="_blank" rel="noopener">Athena&rsquo;s KL recommendations list</a>.</p></div>
       </details>
       <details class="faq">
         <summary>What should I wear?</summary>
@@ -680,8 +689,8 @@
       note.textContent = "";
       if (!res || !res.length) {
         note.textContent = /\s/.test(q.trim())
-          ? "We couldn’t find that name. Try it exactly as it appears on your invitation, or use your code. Still stuck? Message Athena."
-          : "Please type your first and last name (e.g. Arjun Menon), or the code from your invitation.";
+          ? "We couldn’t find that name. Try it exactly as it appears on your invitation. Still stuck? Message Athena."
+          : "Please type your full name, first and last (e.g. Arjun Menon).";
         return;
       }
       if (res.length === 1) return open(res[0]);
@@ -710,18 +719,17 @@
     $("r-hello").textContent = "Hello, " + names(party) + ".";
     var many = party.guests.length > 1;
     $("r-lead").textContent = many
-      ? "We’ve found your invitation. Please tell us, for each of you, which events you can make."
-      : "We’ve found your invitation. Please tell us which events you can make.";
+      ? "We’ve found your invitation. There’s a reply for each of you below. We’ve ticked “joyfully accepts” for everything, so just change anything someone can’t make."
+      : "We’ve found your invitation. We’ve ticked “joyfully accepts” for everything, so just change anything you can’t make.";
     var html = "";
     party.guests.forEach(function(g, i){
-      html += '<div class="rg" data-id="' + esc(g.id) + '">' + (many ? "<h3>" + esc(fullName(g)) + "</h3>" : "");
+      html += '<div class="rg" data-id="' + esc(g.id) + '"><p class="rg-name">' + esc(fullName(g)) + "</p>";
       evs(g).forEach(function(ev){
-        var n = "g" + i + "-" + ev, v = g[ev];
+        var n = "g" + i + "-" + ev, v = g[ev], yes = v !== false;   // unanswered = pre-ticked yes
         html += '<div class="rq" data-ev="' + ev + '"><div class="ev"><b>' + esc(EVENTS[ev].name) + "</b><span>" + esc(EVENTS[ev].short) + "</span></div>" +
-          '<p class="ask">' + (many ? "Will " + esc(g.first_name) + " be there?" : "Will you be there?") + "</p>" +
           '<div class="yn">' +
-          '<label><input type="radio" name="' + n + '" value="1"' + (v === true ? " checked" : "") + "><span>Yes, attending</span></label>" +
-          '<label><input type="radio" name="' + n + '" value="0"' + (v === false ? " checked" : "") + "><span>Sorry, can’t</span></label>" +
+          '<label><input type="radio" name="' + n + '" value="1"' + (yes ? " checked" : "") + "><span>Joyfully accepts</span></label>" +
+          '<label><input type="radio" name="' + n + '" value="0"' + (yes ? "" : " checked") + "><span>Regretfully declines</span></label>" +
           "</div></div>";
       });
       html += '<label class="field"><span class="caps">' + (many ? esc(g.first_name) + "’s dietary requirements" : "Dietary requirements") + ' · optional</span>' +
@@ -831,7 +839,8 @@
       var e = EVENTS[ev];
       var num = function(t){ return t.replace(/[0-9]+/g, '<span class="num">$&</span>'); };
       html += '<div class="k-ev"><p class="d">' + num(e.day) + "</p><p class=\"n\">" + e.name + "</p>" +
-        '<p class="m">' + num(e.time) + " · " + e.venue + "</p>" +
+        '<p class="m">' + num(e.time) + " · " + esc(e.venue) + "</p>" +
+        (e.address ? '<p class="ad"' + (e.map_url ? ' data-map="' + esc(e.map_url) + '"' : "") + "><span>" + num(esc(e.address)) + (e.map_url ? " · View map" : "") + "</span></p>" : "") +
         '<p class="dr">Dress code: ' + e.dress + "</p>" +
         (attendees.length > 1 && going[ev].length < attendees.length ? '<p class="who">' + esc(going[ev].join(" & ")) + " attending</p>" : "") +
         "</div>";
@@ -847,6 +856,12 @@
       .then(function(canvas){
         var pdf = new window.jspdf.jsPDF({ unit: "mm", format: "a4" });
         pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", 0, 0, 210, 297);
+        // make each address line a clickable Google Maps link (840px card → 210mm page)
+        var k = $("keep").getBoundingClientRect(), mm = 210 / k.width;
+        $("keep").querySelectorAll("[data-map]").forEach(function(el){
+          var r = el.getBoundingClientRect();
+          pdf.link((r.left - k.left) * mm, (r.top - k.top) * mm, r.width * mm, r.height * mm, { url: el.getAttribute("data-map") });
+        });
         pdf.save("Athena-and-Uday-KL-itinerary.pdf");
       })
       .catch(function(){ alert("Sorry, the itinerary couldn’t be made just now. Please try again."); })
