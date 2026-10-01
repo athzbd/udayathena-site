@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#3E0D13">
 <meta name="description" content="Athena & Uday are getting married in Kuala Lumpur, 8–9 January 2027. The schedule, travel, FAQ and RSVP.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://udayathena.info/kl/">
+<meta property="og:url" content="https://athenauday.info/">
 <meta property="og:title" content="Athena & Uday · Kuala Lumpur">
 <meta property="og:description" content="8–9 January 2027. The schedule, travel, FAQ and RSVP.">
-<meta property="og:image" content="https://udayathena.info/kl/photos/og-image.jpg">
+<meta property="og:image" content="https://athenauday.info/photos/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -242,15 +242,18 @@
   .rq .ev{margin-bottom:10px}
   .rq .ev b{display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:26px; line-height:1.2}
   .rq .ev span{font-size:10px; letter-spacing:.24em; text-transform:uppercase; font-weight:500; color:var(--soft)}
-  .yn{display:flex; flex-wrap:wrap; justify-content:center; gap:6px 30px}
+  .yn{display:grid; grid-template-columns:1fr 1fr; gap:10px; max-width:480px; margin:0 auto}
+  @media(max-width:480px){.yn{grid-template-columns:1fr}}
   .yn label{position:relative; cursor:pointer; display:flex}
   .yn input{position:absolute; opacity:0; pointer-events:none}
-  .yn span{display:inline-flex; align-items:center; gap:10px; padding:6px 2px; font-size:19px;
-    font-style:italic; color:var(--soft); transition:color .15s}
-  .yn span::before{content:""; width:11px; height:11px; border-radius:50%; border:1px solid currentColor;
-    box-shadow:inset 0 0 0 2px var(--ivory); transition:.15s}
-  .yn label:hover span{color:var(--wine)}
-  .yn input:checked + span{color:var(--wine)}
+  .yn label{display:flex}
+  .yn span{flex:1; display:flex; align-items:center; justify-content:center; gap:12px; padding:15px 14px;
+    border:1px solid var(--hair); font-size:21px; font-style:italic; color:var(--soft); background:transparent;
+    transition:color .15s, border-color .15s, background .15s}
+  .yn span::before{content:""; flex:0 0 auto; width:18px; height:18px; border-radius:50%; border:1.5px solid currentColor;
+    box-shadow:inset 0 0 0 3px var(--ivory); transition:.15s}
+  .yn label:hover span{color:var(--wine); border-color:var(--wine)}
+  .yn input:checked + span{color:var(--wine); border:1.5px solid var(--wine); background:rgba(62,13,19,.05)}
   .yn input:checked + span::before{background:var(--wine); border-color:var(--wine)}
   .yn input:focus-visible + span{outline:1px solid var(--wine); outline-offset:4px}
   .rg .field{margin-top:14px}
@@ -262,7 +265,7 @@
   .steps li.past{opacity:.9}
   .rintro.small{font-size:15.5px; margin-top:22px}
   .rq .ask{font-size:17px; margin-bottom:10px}
-  .rq.missing .yn span{color:#9B2230}
+  .rq.missing .yn span{color:#9B2230; border-color:#9B2230}
   .rq.missing .ask{color:#9B2230}
   .rcount{margin-top:26px; font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--soft)}
   .rcount.ok{color:var(--wine)}
@@ -525,7 +528,7 @@
     <div id="k-events"></div>
     <div class="k-foot">
       <p id="k-stay">Staying at the Shangri-La? Speak to Athena for the guest rate.</p>
-      <p class="k-url">udayathena.info/kl</p>
+      <p class="k-url">athenauday.info</p>
     </div>
   </div>
 </div>
@@ -880,7 +883,7 @@
         "DTSTART:" + c.cal_start, "DTEND:" + c.cal_end,
         "SUMMARY:" + EVENTS[ev].name + " · Athena & Uday",
         "LOCATION:" + c.cal_where.replace(/,/g, "\\,"),
-        "URL:https://udayathena.info/kl/", "END:VEVENT");
+        "URL:https://athenauday.info/", "END:VEVENT");
     });
     L.push("END:VCALENDAR");
     var a = document.createElement("a");
