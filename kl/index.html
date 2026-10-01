@@ -237,7 +237,8 @@
   .pick button:hover{font-style:italic}
   .rhello{font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:clamp(30px,7.4vw,40px); line-height:1.25}
   .rg{padding:30px 0 26px; border-top:1px solid var(--hair)}
-  .rg-name{font-weight:400; font-size:14px; letter-spacing:.32em; text-transform:uppercase; margin-bottom:6px}
+  .rg-name{display:block; padding:14px 12px 13px; margin-bottom:10px; background:var(--wine); color:var(--ivory);
+    font-weight:500; font-size:15px; letter-spacing:.32em; text-transform:uppercase; text-align:center}
   .rq{padding:14px 0}
   .rq .ev{margin-bottom:10px}
   .rq .ev b{display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:26px; line-height:1.2}
@@ -729,7 +730,7 @@
       html += '<div class="rg" data-id="' + esc(g.id) + '"><p class="rg-name">' + esc(fullName(g)) + "</p>";
       evs(g).forEach(function(ev){
         var n = "g" + i + "-" + ev, v = g[ev], yes = v !== false;   // unanswered = pre-ticked yes
-        html += '<div class="rq" data-ev="' + ev + '"><div class="ev"><b>' + esc(EVENTS[ev].name) + "</b><span>" + esc(EVENTS[ev].short) + "</span></div>" +
+        html += '<div class="rq" data-ev="' + ev + '"><div class="ev"><b>' + esc(EVENTS[ev].name) + "</b><span>" + esc(EVENTS[ev].day) + " · " + esc(EVENTS[ev].time) + "</span></div>" +
           '<div class="yn">' +
           '<label><input type="radio" name="' + n + '" value="1"' + (yes ? " checked" : "") + "><span>Joyfully accepts</span></label>" +
           '<label><input type="radio" name="' + n + '" value="0"' + (yes ? "" : " checked") + "><span>Regretfully declines</span></label>" +
